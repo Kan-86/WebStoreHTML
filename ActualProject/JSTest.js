@@ -18,13 +18,10 @@ $('#watchesTable').on('click', 'button', event => {
     deleteWatches(event.currentTarget);
 });
 
-$('#btnId').on('click', event => {
-    deleteWatches(event.currentTarget);
-});
 
-function deleteWatches() {
+function deleteWatches(target) {
     // Call Web API to get a list of post
-    var id  = $('#btnId').attr('value');
+    var id = target.getAttribute('data-id');
     $.ajax({
         url: 'http://watchwebstore.azurewebsites.net/api/watches/'+ id,
         type: 'DELETE',
@@ -40,6 +37,10 @@ function deleteWatches() {
         },
         error: function (request, message, error) {
             handleException(request, message, error);
+            console.log(id);
+            $('tr.selector').remove();
+            $('div.success').fadeIn();
+            alert('Watch deleted');
         }
     });
 }
@@ -83,13 +84,6 @@ function buildwatchesRow(watch) {
         "<td>" + watch.price + "</td>" +
         "<td>" +
         "<button type='button' " +
-        "class='btn btn-info' " +
-        "data-id='" + watch.id + "'>" +
-        "<i class='fas fa-info-circle'></i>" +
-        "</button>" +
-        "</td >" +
-        "<td>" +
-        "<button type='button' " +
         "class='btn btn-danger' " +
         "data-id='" + watch.id + "'>" +
         "<i class='fas fa-minus-circle'></i>" +
@@ -103,8 +97,8 @@ function buildwatchesRow(watch) {
 
 $('#myFormWatch').on('submit',function(e){
     e.preventDefault();
-    var productName = $( "#watchProductType" ).val();
-    var productDescription = $( "#watchProduct" ).val();
+    var productName = $( "#watchProduct" ).val();
+    var productDescription = $( "#watchProductType" ).val();
     var productPicture = $( "#watchPicture" ).val();
     var stock = $( "#watchStock" ).val();
     var price = $( "#watchPrice" ).val();
