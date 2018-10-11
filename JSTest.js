@@ -18,20 +18,25 @@ $('#watchesTable').on('click', 'button', event => {
     deleteWatches(event.currentTarget);
 });
 
+$('#btnId').on('click', event => {
+    deleteWatches(event.currentTarget);
+});
+
 function deleteWatches() {
     // Call Web API to get a list of post
-    var id  = $('#id').attr('value');
+    var id  = $('#btnId').attr('value');
     $.ajax({
-        url: 'http://watchwebstore.azurewebsites.net/api/watches/',
+        url: 'http://watchwebstore.azurewebsites.net/api/watches/'+ id,
         type: 'DELETE',
         dataType: 'json',
-        data: "id=" + id,
+        //data: "id=" + id,
         async: true,
         processData: false,
         cache: false,
         success: function () {
             $('tr.selector').remove();
             $('div.success').fadeIn();
+            alert('Watch deleted');
         },
         error: function (request, message, error) {
             handleException(request, message, error);
