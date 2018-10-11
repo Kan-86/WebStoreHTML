@@ -117,6 +117,7 @@ $('#myFormWatch').on('submit',function(e){
         contentType: 'application/json',
         success: function (comments) {
             console.log("Yay");
+            alert("Watch added!");
         },
         error: function (request, message, error) {
             handleException(request, message, error);
