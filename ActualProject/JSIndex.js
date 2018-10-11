@@ -1,5 +1,5 @@
 $.ajax({
-    url: 'http://watchwebstore.azurewebsites.net/api/watches/',
+    url: 'http://watchwebstore.azurewebsites.net/api/watches?CurrentPage=1&ItemsPerPage=3',
     type: 'GET',
     dataType: 'json',
     success: function (watches) {
@@ -17,15 +17,18 @@ function onGetWatchesSuccess(watches) {
         + '<a href="#top"><img src="img/logo.png" class="image2" alt="lol" width="52" height="52"></a></div>'
     );
     $.each(watches, function (index, watch) {
-        $("#pageD").append('<div id="div_"' + (index + 2) + '>');
-        $("#pageD").append('<a href="index1.html?id=' + watch.id + '">');
+        $("#pageD").append('<div id="div_' + (index + 2) + '">');
+        $("#div_"+ (index+2)).append('<a href="index1.html">' + '<img alt="W3Schools" src="' + watch.productPicture + '" width="190" height="190">' + '</a>');
+        $("#pageD").append('</div>');
 
     })
+
+    $.each(watches, function (index, watch) {
+        $("#pageD").append('</div > ' +
+            '<div id="disc_' + (index + 1) + '">' + watch.productName + '</h2></div>');
+    })
+
     
-    $("#pageD").append('</div > ' +
-        '<div id="disc_1"><h2>STAY CONNECTED</h2></div>' +
-        '<div id="disc_2"><h2>STAY ACTIVE</h2></div>' +
-        '<div id="disc_3"><h2>STAY HEALTHY</h2></div>')
 }
 
        
