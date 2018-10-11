@@ -1,0 +1,60 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:300');
+*{
+    margin: 0;
+    padding: 0;
+}
+
+#section {
+    background-color: #ffffff;
+    display: grid;
+    grid-template-columns: repeat(31, 1fr);
+    grid-template-rows: repeat(30, 1fr);
+    width: auto;
+    height: 627px;
+    float: top;
+    margin: 0;
+
+}
+
+#box1b {
+    display: grid;
+    grid-column-start: 3;
+    grid-column-end: 30;
+    grid-row-start: 2;
+    grid-row-end: 30;
+    background-color: rgb(255, 255, 255);
+    background-image: url("../img/alio3.jpg");
+
+}
+
+#box2b {
+    display: grid;
+    grid-column-start: 20;
+    grid-column-end: 23;
+    grid-row-start: 21;
+    grid-row-end: 24;
+    background-color: rgb(255, 255, 255);
+    font-family: 'Roboto', sans-serif;
+    text-align: center;
+    font-size: 20px;
+    border-radius: 3px;
+    border-style: solid;
+    border-color: #8C6464;
+}
+#box_gb
+{
+    display: flex;
+    background-color: #ffffff);
+    transform: rotate(40deg);
+    grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row-start: 2;
+    grid-row-end: 3;
+}
+#box2b a
+{
+    text-decoration: none;
+    text-align: center;
+    margin: 0 auto;
+    color: #8C6464;;
+}
